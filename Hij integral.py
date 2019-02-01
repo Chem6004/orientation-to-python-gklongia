@@ -25,3 +25,7 @@ c[0] = 1
 Hc = np.dot(H_mat,c)
 E = np.dot(np.transpose(c),Hc)
 print (E)
+
+E_opt, c_opt = np.linalg.eig(H_mat) 
+print(E_opt[0]) 
+print(c_opt[0]) 
