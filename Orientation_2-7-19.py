@@ -3,8 +3,8 @@
 import numpy as np 
 import time 
 from matplotlib import pyplot as plt  
-
-'''#(Kinetic Energy of N particles)
+'''
+#(Kinetic Energy of N particles)
 N = 5 #(#ofparticles) 
 m = np.zeros(N) #(mass)
 v = np.zeros(N) #(velocity) 
@@ -28,14 +28,15 @@ T_tot_sum = np.sum(T)
 print("Result from loop is", T_tot_loop)
 print("Result from numpy sum is", T_tot_sum)
 
-        
-print(T1) 
-plt.plot(np.linspace(0,1,N), T1, 'red')
+N_array = [1, 2, 3, 4, 5]
+T_array = [3.125, 6.25, 9.375,  12.5, 15.625 ]      
+
+plt.plot( N_array, T_array, 'red')
 plt.show() 
 
 #Question #2 
-Npart = 5
-q = np.ones(N) 
+N = 1
+q = np.zeros(N) 
 x = np.linspace(0, (N-1)*0.2,Npart)
 r = np.zeros((N,N))
 
@@ -57,23 +58,29 @@ def Potential(sep_array, charge_array,N):
     return Pot 
 P = np.zeros(N)
 for i in range(0,N):
-    V = Potential(r,q,i)
+    V = Potential(r,q)
     if i == 0:
         P[i] = V 
     else:
         P[i] = V + P[i-1]
-        
+
+V_array = []         
 
 print(V_tot)
-plt.plot(np.linspace(0,1,N), P, 'blue') 
 '''
+#Npart_array = [1, 2, 3, 4, 5]
+#V_array = []
+#plt.plot(np.linspace(0,1,N), P, 'blue') 
+
 #Question #3
+N_array = [1, 2, 3, 4, 5]
+T_array = [3.125, 6.25, 9.375,  12.5, 15.625 ]      
+V_array = 
 start = time.time()
-x = np.linspace(-5,6,100)
-y = x**2 
+x = N_array
+y = T_array 
 plt.plot(x, y, 'red')
-plt.xlim(0,6)
-plt.ylim(0,36)
+
 plt.show()
 
 end = time.time()
