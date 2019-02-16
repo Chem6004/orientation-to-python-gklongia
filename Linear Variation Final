@@ -1,0 +1,96 @@
+#Question part 1 # 2
+
+import numpy as np
+import pylab
+import math
+from matplotlib import pyplot as plt
+pi = math.pi
+m = 1.0
+l = 10.0
+
+def H_ij(i,j): 
+    
+    a = (1/5) * np.sin(j * 5 * np.pi/10) * np.sin(i*5*np.pi/10)  
+    b = (np.pi**2 * j**2) / 200
+    
+    if i==j:
+        ham_int = a + b
+
+    else: 
+        ham_int = a
+        
+    return ham_int 
+
+H_mat = np.zeros((3,3))
+for i in range(1,4):
+    for j in range(1,4):
+        H_mat[i-1][j-1] = H_ij(i, j)
+print(H_mat)
+
+c = np.zeros(3)
+c[0] = 1
+c[1] = 0
+c[2] = 0
+
+Hc = np.dot(H_mat,c)
+E = np.dot(np.transpose(c),Hc)
+print (E)
+
+E_opt, c_opt = np.linalg.eig(H_mat) 
+print(E_opt[0]) 
+print(c_opt[0]) 
+
+#Questions part 2 
+#1 Is the energy you calculated above higher or lower than the ground state energy of the ordinary particle in a box system 
+#(without the delta function potential)?
+
+### The energy that was calculated was higher than the ground state energy of the ordinary particle in a box system. 
+
+#2 Why do you think mixing in functions that correspond to excited states in the ordinary particle in a box system actually helped to 
+#improve (i.e. lower) your energy in the system with the delta function potential?
+
+### Mixing in functions that correspond to excited states in the ordinary particle in a box system actually helped to improve the energy in 
+### the system since the energy of any approximate trial function is always above the true energy, then any variations in the trial function 
+### which lower its energy are necessarily making the approximate energy closer to the exact answer. 
+
+#3Increase the number of basis functions to 6 (so that ${\bf H}$ is a 6x6 matrix and ${\bf c}$ is a vector with 6 entries) and 
+#repeat your calculation of the variational estimate of the ground state energy. Does the energy improve (lower) compared to what 
+#it was when 3 basis functions were used?
+
+### The energy of the 6 basis functions improves as compared to the energy when 3 basis functions were used. 
+'''
+def H_ij(i,j): 
+    
+    a = (1/5) * np.sin(j * 5 * np.pi/10) * np.sin(i*5*np.pi/10)  
+    b = (np.pi**2 * j**2) / 200
+    
+    if i==j:
+        ham_int = a + b
+
+    else: 
+        ham_int = a
+        
+    return ham_int 
+
+H_mat = np.zeros((6,6))
+for i in range(1,7):
+    for j in range(1,7):
+        H_mat[i-1][j-1] = H_ij(i, j)
+print(H_mat)
+
+c = np.zeros(6)
+c[0] = 1
+c[1] = 0
+c[2] = 0
+c[3] = 1
+c[4] = 0
+c[5] = 0
+
+Hc = np.dot(H_mat,c)
+E = np.dot(np.transpose(c),Hc)
+print (E)
+
+E_opt, c_opt = np.linalg.eig(H_mat) 
+print(E_opt[0]) 
+print(c_opt[0]) 
+'''
