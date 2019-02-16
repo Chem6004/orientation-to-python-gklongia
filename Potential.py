@@ -89,8 +89,10 @@ def Velocity_Verlet(r_curr, v_curr, mu, f_interp, dt):
     
     ### use r_fut to get future acceleration a_fut
     ''' STUDENT WRITTEN CODE GOES HERE!'''
+    a_fut = -1*f_interp(r_fut)/mu
     ### use current and future acceleration to get future velocity v_fut
     ''' STUDENT WRITTEN CODE GOES HERE!'''
+    v_fut = v_curr + 0.5 * (a_curr + a_fut)*dt
     
     result = [r_fut, v_fut]
     
